@@ -81,3 +81,33 @@ A unique key allows React to:
 
 React says don't use index as the key value.
 https://robinpokorny.com/blog/index-as-a-key-is-an-anti-pattern/
+
+Types of Export
+
+- Named export
+  export const variableName
+  import { variableName } from "path"
+
+- Default export
+  export default variableName
+  import variableName from "path"
+
+---
+
+React Hooks:
+
+There is one primary work of a react, and then there are some side effects, which
+are typically not the responsibility of react but still need to be synchronzied with State.
+These kind of work are done via Hooks.
+
+---
+
+React Reconciliation Algorithm aka React Fiber
+
+React has a virtual DOM which is representation of actual DOM. In DOM, we have elements like div, but in
+Virtual DOM, we have components are represented as Javascript objects. Then, we have a Diff-Algorithm.
+
+If some operation like clicking button happens, which update the state, the Diff-algorithm will identify the
+difference between previous Virtual DOM and new Virtual DOM and then update the actual DOM.
+
+Finding difference between two DOMs is slower than finding difference between two JS Objects.

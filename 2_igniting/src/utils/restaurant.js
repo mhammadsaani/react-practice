@@ -1,5 +1,4 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import { resume } from "react-dom/server";
 
 const restaurants = [
   {
@@ -631,71 +630,4 @@ const restaurants = [
   },
 ];
 
-function Header() {
-  return (
-    <div className="header">
-      <div>
-        <img
-          className="logo"
-          src="https://imgs.search.brave.com/v61ipGZGJ-lvwgwP2HnQS0rhi8iySj_F_jlVx7pMDWk/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wMDcv/Njg4Lzc1Ny9zbWFs/bC9vcmdhbmljLWZv/b2QtbG9nby1mcmVl/LXZlY3Rvci5qcGc"
-        />
-      </div>
-      <div className="nav-items">
-        <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact Us</li>
-          <li>Cart</li>
-        </ul>
-      </div>
-    </div>
-  );
-}
-
-function RestaurantCard(props) {
-  const { resData } = props;
-  const { name, cuisines, avgRating, sla, cloudinaryImageId } = resData.info;
-  return (
-    <div className="res-card">
-      <img
-        className="res-card-img"
-        src={
-          "https://media-assets.swiggy.com/swiggy/image/upload/" +
-          cloudinaryImageId
-        }
-      />
-      <h3>{name}</h3>
-      <h4>{cuisines.join(", ")}</h4>
-      <h5>{avgRating}</h5>
-      <h5>{sla.deliveryTime} minutes</h5>
-    </div>
-  );
-}
-
-function Body() {
-  return (
-    <div className="body">
-      <div className="search">Search</div>
-      <div className="res-container">
-        {restaurants.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} resData={restaurant} />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function App() {
-  return (
-    <>
-      <div className="app">
-        <Header />
-        <Body />
-      </div>
-    </>
-  );
-}
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-
-root.render(<App />);
+export default restaurants;
