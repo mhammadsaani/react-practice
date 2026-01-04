@@ -111,3 +111,44 @@ If some operation like clicking button happens, which update the state, the Diff
 difference between previous Virtual DOM and new Virtual DOM and then update the actual DOM.
 
 Finding difference between two DOMs is slower than finding difference between two JS Objects.
+
+---
+
+Fetching Data
+
+- Page loads -> API Request -> Data -> Show in UI
+- Page Loads -> Render UI -> API Request -> Data -> Populate Data in the UI
+
+---
+
+useEffect(cb, dependencyArray)
+The UI will first render, then the callback.
+Then, if something that is in dependencyArray changes, the useEffect is again called.
+
+SideEffect/ Side Effect is something that React cannot track. If it cannot tract, it cannot synchronize. So, react provide us
+a way called useEffect so we can do the untracked operation and once it is done, inform to the React.
+Code - React cannot track setInterval, because it is browser specific thing.
+
+```
+function TimerComponent() {
+  const [seconds, setSeconds] = useState(0);
+
+  // This is a Side Effect happening in the "Pure" body.
+  // React cannot track this!
+  setInterval(() => {
+    setSeconds(s => s + 1);
+  }, 1000);
+
+  return <h1>Seconds: {seconds}</h1>;
+}
+```
+
+Phases of React Component
+
+There are three main phases in an actor's (component's) life:
+
+- Mounting: Component Rendering for the first time, tags coming in actual DOM
+- Updating: Component being updated on some click and re rerendering
+- Unmounting: Component is deleted from the DOM
+
+---
