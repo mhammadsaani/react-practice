@@ -96,6 +96,18 @@ Types of Export
 
 React Hooks:
 
+Definition:
+React is a library that maintains its own internal state and data structures, and
+hooks let function components access and interact with that internal state in a controlled way.
+
+if I am making a variable using useState hook, what essentially I am saying that
+store the data inside your internal system, and manage it yourself.
+
+React internally keeps track of component state and lifecycle, and hooks are the API that let function components use that.
+
+---
+
+useEffect
 There is one primary work of a react, and then there are some side effects, which
 are typically not the responsibility of react but still need to be synchronzied with State.
 These kind of work are done via Hooks.
@@ -152,3 +164,49 @@ There are three main phases in an actor's (component's) life:
 - Unmounting: Component is deleted from the DOM
 
 ---
+
+Tips:
+
+- Never write a component in which some hooks are used and some are not.
+
+---
+
+Routing in Apps
+
+- Client Side Routing, in CSR, we donot make network call. when / is loaded, everything is loaded. This is also called Single Page Application.
+  If we do /contact, it already has the relevant html for the /contact and donot ask the server.
+- Server Side Routing, in SSR. if we go to /contact route. It will ask server to send /contact page.
+  Routing in React
+
+To do routing in react, we need to do routing configuration.
+Routing configuration is done in the Root Level Component.
+
+- Design the Config
+- Apply the Config
+
+```
+import {Outlet} from 'react-router-dom'
+
+function App(){
+  return (
+    <Outlet />
+  )
+}
+
+const routeConfig = createBrowserRouter([
+  {
+    path: '/',
+    element: <Component />,
+    errorElement: <Error />
+    childer: [
+      {
+        path: /about,
+        element: <Body />,
+
+      }
+    ]
+  }
+])
+
+root.render(<RouterProvider router={routerConfig}>)
+```
