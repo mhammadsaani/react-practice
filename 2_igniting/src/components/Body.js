@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
-
+import restaurants from "../utils/restaurant";
 function Body() {
   const [res, setRes] = useState([]);
   const [filteredRes, setFilteredRes] = useState(res);
@@ -12,18 +12,21 @@ function Body() {
   }, []);
 
   async function fetchData() {
-    const response = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&page_type=DESKTOP_WEB_LISTING"
-    );
-    const json = await response.json();
-    console.log(json);
+    // const response = await fetch(
+    //   "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&page_type=DESKTOP_WEB_LISTING"
+    // );
+    // const json = await response.json();
+    // console.log(json);
 
-    setRes(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setFilteredRes(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
+    // setRes(
+    //   json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    // );
+    // setFilteredRes(
+    //   json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    // );
+
+    setRes(restaurants);
+    setFilteredRes(restaurants);
   }
 
   return res.length === 0 ? (

@@ -96,6 +96,9 @@ Types of Export
 
 React Hooks:
 
+React itself manages the state of each component and handles its lifecycle (mounting, updating, unmounting).
+Hooks are the way you “interact” with that state and lifecycle from function components.
+Hook
 Definition:
 React is a library that maintains its own internal state and data structures, and
 hooks let function components access and interact with that internal state in a controlled way.
@@ -210,3 +213,12 @@ const routeConfig = createBrowserRouter([
 
 root.render(<RouterProvider router={routerConfig}>)
 ```
+
+Component Mouting
+
+1. The Render Phase (Top-Down)React starts at the root (Parent) and works its way down to the leaves (Children). It needs to call every component's "render" logic to build a tree of what the UI should look like.
+   Order: Parent Render --> Child 1 Render --> Child 2 Render
+   Purpose: To create the "Virtual DOM." No changes are made to the actual screen yet
+
+2. The Commit Phase (Bottom-Up)Once the Virtual DOM is ready, React updates the actual Browser DOM. Only after the DOM is updated does it fire the lifecycle methods. These fire from the deepest child upward.
+   Order: Child 1 componentDidMount --> Child 2 componentDidMount --> Parent componentDidMount.Purpose: To ensure that when a Parent's mount logic runs, it is 100% certain that all its children are already alive, rendered, and accessible in the DOM.
